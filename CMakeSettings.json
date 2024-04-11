@@ -1,0 +1,17 @@
+﻿{
+  "configurations": [
+    {
+      "buildCommandArgs": "-v",
+      "buildRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\build\\Release\\${name}",
+      "cmakeCommandArgs": "",
+      "configurationType": "Release",
+      "ctestCommandArgs": "",
+      "generator": "Ninja",
+      "inheritEnvironments": [
+        "msvc_x86"
+      ],
+      "installRoot": "${env.USERPROFILE}\\CMakeBuilds\\${workspaceHash}\\install\\${name}",
+      "name": "x86-Release"
+    }
+  ]
+}

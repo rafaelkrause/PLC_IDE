@@ -1,0 +1,3 @@
+/home/leise/Downloads/PLC_IDE/build/CMakeFiles/L-PLC_IDE.dir
+/home/leise/Downloads/PLC_IDE/build/CMakeFiles/edit_cache.dir
+/home/leise/Downloads/PLC_IDE/build/CMakeFiles/rebuild_cache.dir
