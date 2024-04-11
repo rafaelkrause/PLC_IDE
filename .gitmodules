@@ -1,0 +1,3 @@
+[submodule "lib/ThirdParty/clip"]
+	path = lib/ThirdParty/clip
+	url = https://github.com/dacap/clip.git
