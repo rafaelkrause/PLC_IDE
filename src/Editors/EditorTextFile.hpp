@@ -30,7 +30,6 @@ public:
 
 	const char* GetVarData() override			{ return m_texteditor.GetText().c_str(); }
 	void		SetVarData(const char* data) override  { m_texteditor.SetText(data); }
-	void		PushSetUserCmdByMenu(EDITOR_COMMANDS cmd) override { ; }
 	int			GetActualLineIdx() override			{ return iec_max(0, m_texteditor.GetCursorPosition().mLine + 1);   }
 	int			GetActualColdx() override			{ return iec_max(0, m_texteditor.GetCursorPosition().mColumn + 1); }
 	bool		IsOverwrite() override				{ return m_texteditor.IsOverwrite(); }

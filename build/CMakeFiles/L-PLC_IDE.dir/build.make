@@ -349,10 +349,24 @@ CMakeFiles/L-PLC_IDE.dir/lib/ThirdParty/whereami/whereami.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/L-PLC_IDE.dir/lib/ThirdParty/whereami/whereami.c.s"
 	/usr/bin/gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/leise/Downloads/PLC_IDE/lib/ThirdParty/whereami/whereami.c -o CMakeFiles/L-PLC_IDE.dir/lib/ThirdParty/whereami/whereami.c.s
 
+CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.o: CMakeFiles/L-PLC_IDE.dir/flags.make
+CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.o: /home/leise/Downloads/PLC_IDE/src/Editors/EditorPouLadder.cpp
+CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.o: CMakeFiles/L-PLC_IDE.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leise/Downloads/PLC_IDE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.o -MF CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.o.d -o CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.o -c /home/leise/Downloads/PLC_IDE/src/Editors/EditorPouLadder.cpp
+
+CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/leise/Downloads/PLC_IDE/src/Editors/EditorPouLadder.cpp > CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.i
+
+CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/leise/Downloads/PLC_IDE/src/Editors/EditorPouLadder.cpp -o CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.s
+
 CMakeFiles/L-PLC_IDE.dir/src/Widgets/Basics.cpp.o: CMakeFiles/L-PLC_IDE.dir/flags.make
 CMakeFiles/L-PLC_IDE.dir/src/Widgets/Basics.cpp.o: /home/leise/Downloads/PLC_IDE/src/Widgets/Basics.cpp
 CMakeFiles/L-PLC_IDE.dir/src/Widgets/Basics.cpp.o: CMakeFiles/L-PLC_IDE.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leise/Downloads/PLC_IDE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/L-PLC_IDE.dir/src/Widgets/Basics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leise/Downloads/PLC_IDE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/L-PLC_IDE.dir/src/Widgets/Basics.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/L-PLC_IDE.dir/src/Widgets/Basics.cpp.o -MF CMakeFiles/L-PLC_IDE.dir/src/Widgets/Basics.cpp.o.d -o CMakeFiles/L-PLC_IDE.dir/src/Widgets/Basics.cpp.o -c /home/leise/Downloads/PLC_IDE/src/Widgets/Basics.cpp
 
 CMakeFiles/L-PLC_IDE.dir/src/Widgets/Basics.cpp.i: cmake_force
@@ -366,7 +380,7 @@ CMakeFiles/L-PLC_IDE.dir/src/Widgets/Basics.cpp.s: cmake_force
 CMakeFiles/L-PLC_IDE.dir/src/Widgets/Graphs.cpp.o: CMakeFiles/L-PLC_IDE.dir/flags.make
 CMakeFiles/L-PLC_IDE.dir/src/Widgets/Graphs.cpp.o: /home/leise/Downloads/PLC_IDE/src/Widgets/Graphs.cpp
 CMakeFiles/L-PLC_IDE.dir/src/Widgets/Graphs.cpp.o: CMakeFiles/L-PLC_IDE.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leise/Downloads/PLC_IDE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/L-PLC_IDE.dir/src/Widgets/Graphs.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leise/Downloads/PLC_IDE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/L-PLC_IDE.dir/src/Widgets/Graphs.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/L-PLC_IDE.dir/src/Widgets/Graphs.cpp.o -MF CMakeFiles/L-PLC_IDE.dir/src/Widgets/Graphs.cpp.o.d -o CMakeFiles/L-PLC_IDE.dir/src/Widgets/Graphs.cpp.o -c /home/leise/Downloads/PLC_IDE/src/Widgets/Graphs.cpp
 
 CMakeFiles/L-PLC_IDE.dir/src/Widgets/Graphs.cpp.i: cmake_force
@@ -380,7 +394,7 @@ CMakeFiles/L-PLC_IDE.dir/src/Widgets/Graphs.cpp.s: cmake_force
 CMakeFiles/L-PLC_IDE.dir/src/Widgets/LadderElement.cpp.o: CMakeFiles/L-PLC_IDE.dir/flags.make
 CMakeFiles/L-PLC_IDE.dir/src/Widgets/LadderElement.cpp.o: /home/leise/Downloads/PLC_IDE/src/Widgets/LadderElement.cpp
 CMakeFiles/L-PLC_IDE.dir/src/Widgets/LadderElement.cpp.o: CMakeFiles/L-PLC_IDE.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leise/Downloads/PLC_IDE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/L-PLC_IDE.dir/src/Widgets/LadderElement.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leise/Downloads/PLC_IDE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/L-PLC_IDE.dir/src/Widgets/LadderElement.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/L-PLC_IDE.dir/src/Widgets/LadderElement.cpp.o -MF CMakeFiles/L-PLC_IDE.dir/src/Widgets/LadderElement.cpp.o.d -o CMakeFiles/L-PLC_IDE.dir/src/Widgets/LadderElement.cpp.o -c /home/leise/Downloads/PLC_IDE/src/Widgets/LadderElement.cpp
 
 CMakeFiles/L-PLC_IDE.dir/src/Widgets/LadderElement.cpp.i: cmake_force
@@ -394,7 +408,7 @@ CMakeFiles/L-PLC_IDE.dir/src/Widgets/LadderElement.cpp.s: cmake_force
 CMakeFiles/L-PLC_IDE.dir/src/Widgets/TextEditor.cpp.o: CMakeFiles/L-PLC_IDE.dir/flags.make
 CMakeFiles/L-PLC_IDE.dir/src/Widgets/TextEditor.cpp.o: /home/leise/Downloads/PLC_IDE/src/Widgets/TextEditor.cpp
 CMakeFiles/L-PLC_IDE.dir/src/Widgets/TextEditor.cpp.o: CMakeFiles/L-PLC_IDE.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leise/Downloads/PLC_IDE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/L-PLC_IDE.dir/src/Widgets/TextEditor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leise/Downloads/PLC_IDE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/L-PLC_IDE.dir/src/Widgets/TextEditor.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/L-PLC_IDE.dir/src/Widgets/TextEditor.cpp.o -MF CMakeFiles/L-PLC_IDE.dir/src/Widgets/TextEditor.cpp.o.d -o CMakeFiles/L-PLC_IDE.dir/src/Widgets/TextEditor.cpp.o -c /home/leise/Downloads/PLC_IDE/src/Widgets/TextEditor.cpp
 
 CMakeFiles/L-PLC_IDE.dir/src/Widgets/TextEditor.cpp.i: cmake_force
@@ -408,7 +422,7 @@ CMakeFiles/L-PLC_IDE.dir/src/Widgets/TextEditor.cpp.s: cmake_force
 CMakeFiles/L-PLC_IDE.dir/src/Windows/MainWindow.cpp.o: CMakeFiles/L-PLC_IDE.dir/flags.make
 CMakeFiles/L-PLC_IDE.dir/src/Windows/MainWindow.cpp.o: /home/leise/Downloads/PLC_IDE/src/Windows/MainWindow.cpp
 CMakeFiles/L-PLC_IDE.dir/src/Windows/MainWindow.cpp.o: CMakeFiles/L-PLC_IDE.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leise/Downloads/PLC_IDE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/L-PLC_IDE.dir/src/Windows/MainWindow.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/leise/Downloads/PLC_IDE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/L-PLC_IDE.dir/src/Windows/MainWindow.cpp.o"
 	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/L-PLC_IDE.dir/src/Windows/MainWindow.cpp.o -MF CMakeFiles/L-PLC_IDE.dir/src/Windows/MainWindow.cpp.o.d -o CMakeFiles/L-PLC_IDE.dir/src/Windows/MainWindow.cpp.o -c /home/leise/Downloads/PLC_IDE/src/Windows/MainWindow.cpp
 
 CMakeFiles/L-PLC_IDE.dir/src/Windows/MainWindow.cpp.i: cmake_force
@@ -441,6 +455,7 @@ L__PLC_IDE_OBJECTS = \
 "CMakeFiles/L-PLC_IDE.dir/lib/ThirdParty/SHA2/WjCryptLib_Sha256.c.o" \
 "CMakeFiles/L-PLC_IDE.dir/lib/ThirdParty/sqlite/sqlite3.c.o" \
 "CMakeFiles/L-PLC_IDE.dir/lib/ThirdParty/whereami/whereami.c.o" \
+"CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.o" \
 "CMakeFiles/L-PLC_IDE.dir/src/Widgets/Basics.cpp.o" \
 "CMakeFiles/L-PLC_IDE.dir/src/Widgets/Graphs.cpp.o" \
 "CMakeFiles/L-PLC_IDE.dir/src/Widgets/LadderElement.cpp.o" \
@@ -470,14 +485,17 @@ L__PLC_IDE_EXTERNAL_OBJECTS =
 /home/leise/Downloads/PLC_IDE/bin/unix/L-PLC_IDE: CMakeFiles/L-PLC_IDE.dir/lib/ThirdParty/SHA2/WjCryptLib_Sha256.c.o
 /home/leise/Downloads/PLC_IDE/bin/unix/L-PLC_IDE: CMakeFiles/L-PLC_IDE.dir/lib/ThirdParty/sqlite/sqlite3.c.o
 /home/leise/Downloads/PLC_IDE/bin/unix/L-PLC_IDE: CMakeFiles/L-PLC_IDE.dir/lib/ThirdParty/whereami/whereami.c.o
+/home/leise/Downloads/PLC_IDE/bin/unix/L-PLC_IDE: CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.o
 /home/leise/Downloads/PLC_IDE/bin/unix/L-PLC_IDE: CMakeFiles/L-PLC_IDE.dir/src/Widgets/Basics.cpp.o
 /home/leise/Downloads/PLC_IDE/bin/unix/L-PLC_IDE: CMakeFiles/L-PLC_IDE.dir/src/Widgets/Graphs.cpp.o
 /home/leise/Downloads/PLC_IDE/bin/unix/L-PLC_IDE: CMakeFiles/L-PLC_IDE.dir/src/Widgets/LadderElement.cpp.o
 /home/leise/Downloads/PLC_IDE/bin/unix/L-PLC_IDE: CMakeFiles/L-PLC_IDE.dir/src/Widgets/TextEditor.cpp.o
 /home/leise/Downloads/PLC_IDE/bin/unix/L-PLC_IDE: CMakeFiles/L-PLC_IDE.dir/src/Windows/MainWindow.cpp.o
 /home/leise/Downloads/PLC_IDE/bin/unix/L-PLC_IDE: CMakeFiles/L-PLC_IDE.dir/build.make
+/home/leise/Downloads/PLC_IDE/bin/unix/L-PLC_IDE: lib/ThirdParty/clip/libclip.a
+/home/leise/Downloads/PLC_IDE/bin/unix/L-PLC_IDE: /usr/lib/libpng.so
 /home/leise/Downloads/PLC_IDE/bin/unix/L-PLC_IDE: CMakeFiles/L-PLC_IDE.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/leise/Downloads/PLC_IDE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Linking CXX executable /home/leise/Downloads/PLC_IDE/bin/unix/L-PLC_IDE"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/leise/Downloads/PLC_IDE/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Linking CXX executable /home/leise/Downloads/PLC_IDE/bin/unix/L-PLC_IDE"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/L-PLC_IDE.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

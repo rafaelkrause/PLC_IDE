@@ -72,7 +72,7 @@ public:
         ;
     }
 
-    const char* ToJson();
+   const char* ToJson();
 
     std::string GetUUID()                           { return m_uuid;   }
 

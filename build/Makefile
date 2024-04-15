@@ -129,6 +129,19 @@ L-PLC_IDE/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/L-PLC_IDE.dir/build.make CMakeFiles/L-PLC_IDE.dir/build
 .PHONY : L-PLC_IDE/fast
 
+#=============================================================================
+# Target rules for targets named clip
+
+# Build rule for target.
+clip: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clip
+.PHONY : clip
+
+# fast build rule for target.
+clip/fast:
+	$(MAKE) $(MAKESILENT) -f lib/ThirdParty/clip/CMakeFiles/clip.dir/build.make lib/ThirdParty/clip/CMakeFiles/clip.dir/build
+.PHONY : clip/fast
+
 lib/ThirdParty/GL/unix/gl3w.o: lib/ThirdParty/GL/unix/gl3w.c.o
 .PHONY : lib/ThirdParty/GL/unix/gl3w.o
 
@@ -561,6 +574,30 @@ src/Core/ui_core.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/L-PLC_IDE.dir/build.make CMakeFiles/L-PLC_IDE.dir/src/Core/ui_core.cpp.s
 .PHONY : src/Core/ui_core.cpp.s
 
+src/Editors/EditorPouLadder.o: src/Editors/EditorPouLadder.cpp.o
+.PHONY : src/Editors/EditorPouLadder.o
+
+# target to build an object file
+src/Editors/EditorPouLadder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/L-PLC_IDE.dir/build.make CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.o
+.PHONY : src/Editors/EditorPouLadder.cpp.o
+
+src/Editors/EditorPouLadder.i: src/Editors/EditorPouLadder.cpp.i
+.PHONY : src/Editors/EditorPouLadder.i
+
+# target to preprocess a source file
+src/Editors/EditorPouLadder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/L-PLC_IDE.dir/build.make CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.i
+.PHONY : src/Editors/EditorPouLadder.cpp.i
+
+src/Editors/EditorPouLadder.s: src/Editors/EditorPouLadder.cpp.s
+.PHONY : src/Editors/EditorPouLadder.s
+
+# target to generate assembly for a file
+src/Editors/EditorPouLadder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/L-PLC_IDE.dir/build.make CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.s
+.PHONY : src/Editors/EditorPouLadder.cpp.s
+
 src/UI_MainGL.o: src/UI_MainGL.cpp.o
 .PHONY : src/UI_MainGL.o
 
@@ -738,6 +775,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... L-PLC_IDE"
+	@echo "... clip"
 	@echo "... lib/ThirdParty/GL/unix/gl3w.o"
 	@echo "... lib/ThirdParty/GL/unix/gl3w.i"
 	@echo "... lib/ThirdParty/GL/unix/gl3w.s"
@@ -792,6 +830,9 @@ help:
 	@echo "... src/Core/ui_core.o"
 	@echo "... src/Core/ui_core.i"
 	@echo "... src/Core/ui_core.s"
+	@echo "... src/Editors/EditorPouLadder.o"
+	@echo "... src/Editors/EditorPouLadder.i"
+	@echo "... src/Editors/EditorPouLadder.s"
 	@echo "... src/UI_MainGL.o"
 	@echo "... src/UI_MainGL.i"
 	@echo "... src/UI_MainGL.s"

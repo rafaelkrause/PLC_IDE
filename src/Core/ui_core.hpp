@@ -16,6 +16,7 @@
  // =============================================================================
  //                                  INCLUDES
  // =============================================================================
+#include "EditorBase.hpp"
 #include "IecProject.hpp"
 
 namespace UI_Core
@@ -49,6 +50,11 @@ namespace UI_Core
 	float GetConsoleSize();
 	void SetConsoleSize(float size);
 
+	PlcEditorObject* GetActiveEditor();
+
+	void ClipBoardCopy(const char* format, const char* data, size_t data_size);
+	bool ClipBoardHasData(const char* format);
+	char* ClipBoardGetData(const char *format, size_t* data_size);
 	void NewProject();
 	IecProject* GetProject();
 

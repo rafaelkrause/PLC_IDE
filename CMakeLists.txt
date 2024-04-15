@@ -151,6 +151,19 @@ add_definitions(-DIMGUI_IMPL_OPENGL_LOADER_GL3W)
 add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
 add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 
+
+# Add Clip SubModule (Cross Plataform Clipboard suport)
+# Disable clip examples and tests
+set(CLIP_EXAMPLES OFF CACHE BOOL "Compile clip examples")
+set(CLIP_TESTS OFF CACHE BOOL "Compile clip tests")
+
+# In case that you have ${PNG_LIBRARY} set to support copy/paste images on Linux
+#set(CLIP_X11_PNG_LIBRARY "${PNG_LIBRARY}")
+
+# Add clip subdirectory to compile the library
+add_subdirectory("lib/ThirdParty/clip")
+
+
 # User Interface 
 #***********************************************************************
 if(MSVC)
@@ -173,7 +186,7 @@ if(MSVC)
 				${RESORUCE_UI}
 	)
 
-	target_link_libraries(L-PLC_IDE glfw3 opengl32 gdi32 kernel32 user32 freetype msvcrt msvcmrt)
+	target_link_libraries(L-PLC_IDE glfw3 opengl32 gdi32 kernel32 user32 freetype msvcrt msvcmrt clip)
 
 
 else()
@@ -194,7 +207,7 @@ add_executable(L-PLC_IDE
 				${SRC_WINDOWS}
 				${RESORUCE_UI}
 			)
-	target_link_libraries(L-PLC_IDE pthread dl m glfw3 GL X11 freetype)
+	target_link_libraries(L-PLC_IDE pthread dl m glfw3 GL X11 freetype clip)
     #link to Libraries
     #set_target_properties(L-PLC_IDE PROPERTIES COMPILE_FLAGS "-m32" LINK_FLAGS "-m32")
 endif()

@@ -13,6 +13,7 @@
  // =============================================================================
  //                                  INCLUDES
  // =============================================================================
+#include "Object.hpp"
 #include "gl3w.h"    // Initialize with gl3wInit()
 #include "imgui.h"
 #include "imgui_internal.h"
@@ -20,6 +21,9 @@
 #include "imgui_impl_opengl3.h"
 #include <GLFW/glfw3.h>
 #include "os_generic.h"
+#include <cstddef>
+#include <cstdlib>
+#include <cstring>
 #include <time.h>
 
 #include "log.h"
@@ -32,6 +36,7 @@
 #include "ui_core.hpp"
 #include "UI_Windows.h"
 
+#include "clip/clip.h"
 
  //===================================================================================
 // 									LOCAL CONSTANTS
@@ -562,6 +567,85 @@ IecProject* UI_Core::GetProject()
 {
 	return g_appstate.Project;
 }
+
+PlcEditorObject* UI_Core::GetActiveEditor()
+{
+	return g_appstate.Project->GetActiveEditor();
+}
+
+
+void UI_Core::ClipBoardCopy(const char* format, const char* data, size_t data_size)
+{
+	clip::lock l;
+	l.clear();
+
+	//Commom text format
+	if(!format || os_str_icmp(format, "Text"))
+	{
+		if(!l.set_data(clip::text_format(), data, data_size))
+			LOG_ERROR(UI_CORE_LIB_NAME, "Error Copy text to CopyToClipBoard");
+
+	}
+	//Custom format
+	else 
+	{
+		clip::format custom_format = clip::register_format(format);
+    	l.set_data(custom_format, data, data_size);
+	}
+}
+
+bool UI_Core::ClipBoardHasData(const char* format)
+{
+	clip::lock l;
+
+	if(!format || os_str_icmp(format, "Text"))
+		return l.is_convertible(clip::text_format());
+
+	clip::format custom_format = clip::register_format(format);
+	return l.is_convertible(custom_format);
+
+}
+
+//Data need to be free by user
+char* UI_Core::ClipBoardGetData(const char *format, size_t* data_size)
+{
+
+	if(!ClipBoardHasData(format))
+		return NULL;
+
+	clip::lock l;
+	clip::format f = clip::text_format();
+	
+	//Get format
+	if(format && !os_str_icmp(format, "Text"))
+		f = clip::register_format(format);
+
+	//Get Data Len
+	size_t len = l.get_data_length(f);
+
+	if(len <=0)
+		return NULL;
+
+	//Alloc memory
+	char* result = (char*)malloc(len+1); // Add 1 to make sure strings are NULL terminator
+	
+	if(!result)
+		return NULL;
+
+	memset(result, 0, len+1);
+
+	if(l.get_data(f, result, len))
+	{
+		free(result);
+		return NULL;
+	}
+
+	if(data_size)
+		*data_size = len;
+
+	return result;
+}
+
 
 //===================================================================================
 //								LOCAL FUNCTIONS

@@ -1,3 +1,4 @@
+#include "EditorBase.hpp"
 #include "UI_Icons.h"
 #include "UI_Style.h"
 #include "imgui.h"
@@ -6,12 +7,14 @@
 #include "log.h"
 #include "standartypes.h"
 #include <cstddef>
+#include <cstring>
 #include <string>
 #include "UI_Widgets.h"
 #include "cJSON.h"
+#include "ui_core.hpp"
 
 
-
+    
     const char* LadderElement::ToJson()
     {
 
@@ -61,13 +64,13 @@
             }            
         }
 
-
-    std::vector<BlockPin> m_block_inputs;
-    std::vector<BlockPin> m_block_outputs;
-
-
-
-        return m_json_str.c_str();
+        char* elementJson = cJSON_Print(root);
+        std::string result(elementJson);
+        
+        cJSON_Delete(root);
+        free(elementJson);
+        
+        return result.c_str();
     }
 
     //Draw element and Return its size
@@ -150,11 +153,11 @@
 
             if (ImGui::MenuItemEx(menuItemName(u8"	Cut", tmp.c), u8"	" UI_ICON_MD_CONTENT_CUT, u8"	CTRL+X", false, true))	{ ; };// { m_Editor->PushSetUserCmdByMenu(m_Editor->CMD_CUT); }
             ImGui::Dummy(ImVec2(2, 2));
-            if (ImGui::MenuItemEx(menuItemName(u8"	Copy", tmp.c), u8"	" UI_ICON_MD_CONTENT_COPY, u8"	CTRL+C", false, true))	{ ; };//{ m_Editor->PushSetUserCmdByMenu(m_Editor->CMD_COPY); }
+            if (ImGui::MenuItemEx(menuItemName(u8"	Copy", tmp.c), u8"	" UI_ICON_MD_CONTENT_COPY, u8"	CTRL+C", false, true))	{ ; };
             ImGui::Dummy(ImVec2(2, 2));
-            if (ImGui::MenuItemEx(menuItemName(u8"	Paste", tmp.c), u8"	" UI_ICON_MD_CONTENT_PASTE, u8"	CTRL+V", false, true))	{ ; };//{ m_Editor->PushSetUserCmdByMenu(m_Editor->CMD_PASTE); }
+            if (ImGui::MenuItemEx(menuItemName(u8"	Paste", tmp.c), u8"	" UI_ICON_MD_CONTENT_PASTE, u8"	CTRL+V", false, true))	{ ; };
             ImGui::Dummy(ImVec2(2, 2));
-            if (ImGui::MenuItemEx(menuItemName(u8"	Delete", tmp.c), u8"	" UI_ICON_MD_DELETE, u8"	DEL", false, true))		{ ; };//{ m_Editor->PushSetUserCmdByMenu(m_Editor->CMD_DEL); }
+            if (ImGui::MenuItemEx(menuItemName(u8"	Delete", tmp.c), u8"	" UI_ICON_MD_DELETE, u8"	DEL", false, true))		{ ; };
             ImGui::Dummy(ImVec2(5, 5));
             ImGui::Separator();
             ImGui::Dummy(ImVec2(5, 5));

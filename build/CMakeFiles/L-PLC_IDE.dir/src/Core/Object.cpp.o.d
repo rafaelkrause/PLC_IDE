@@ -108,6 +108,7 @@ CMakeFiles/L-PLC_IDE.dir/src/Core/Object.cpp.o: \
  /home/leise/Downloads/PLC_IDE/lib/ThirdParty/imgui/imconfig.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include/float.h \
  /usr/include/string.h /usr/include/strings.h /usr/include/assert.h \
+ /usr/include/c++/12.2.0/cstddef \
  /home/leise/Downloads/PLC_IDE/src/Editors/EditorPouLadder.hpp \
  /home/leise/Downloads/PLC_IDE/src/Editors/EditorBase.hpp \
  /home/leise/Downloads/PLC_IDE/src/UI_Style.h \
@@ -320,7 +321,10 @@ CMakeFiles/L-PLC_IDE.dir/src/Core/Object.cpp.o: \
  /usr/include/c++/12.2.0/backward/auto_ptr.h \
  /usr/include/c++/12.2.0/pstl/glue_memory_defs.h \
  /home/leise/Downloads/PLC_IDE/lib/ThirdParty/uuid_v4/endianness.h \
- /home/leise/Downloads/PLC_IDE/lib/log.h /usr/include/c++/12.2.0/cstddef \
+ /home/leise/Downloads/PLC_IDE/lib/log.h \
+ /home/leise/Downloads/PLC_IDE/src/Core/ui_core.hpp \
+ /home/leise/Downloads/PLC_IDE/src/Core/IecProject.hpp \
+ /home/leise/Downloads/PLC_IDE/lib/ThirdParty/JSON/cJSON.h \
  /home/leise/Downloads/PLC_IDE/src/Editors/EditorPou.hpp \
  /home/leise/Downloads/PLC_IDE/src/Widgets/UI_Widgets.h \
  /home/leise/Downloads/PLC_IDE/src/Widgets/TextEditor.h \

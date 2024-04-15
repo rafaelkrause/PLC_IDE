@@ -11,12 +11,16 @@
 #include <cstring>
 #include <iterator>
 #include <string>
+#include <system_error>
 #include <vector>
 #include "LadderElement.hpp"
 #include "log.h"
+#include "ui_core.hpp"
+#include "cJSON.h"
 
 class LadderRung
 {
+
 
 
 public:
@@ -45,14 +49,24 @@ public:
     }
 
     void        AddElement(int col_pos, int level);
-    void        RemoveElement(std::string uuid);
-    void        RemoveElement(int col_pos, int level);
-    
-    void        SetAsSelected(bool selected) { m_is_selected = selected;}
-    bool        IsSelected() {return m_is_selected;}
+    void        RemoveElement(std::string& uuid)
+    {
+        for (size_t i; i < m_elements.size(); i++) 
+        {
+            if(m_elements[i].GetUUID() == uuid)
+            {
+                m_elements.erase(m_elements.begin() + i);
+                break;
+            }
+        }
+    }
+    void            RemoveElement(int col_pos, int level);
+    std::string&    GetUUID()                               {return m_uuid;}
 
-    std::string GetSelectedElement();
-    void      Draw(ImDrawList* drawlist, int line_index)
+    void            SetAsSelected(bool selected)            { m_is_selected = selected;}
+    bool            IsSelected()                            {return m_is_selected;}
+
+    void            Draw(ImDrawList* drawlist, int line_index)
     {     
 
         if(!drawlist)
@@ -231,6 +245,22 @@ public:
         } 
     }
 
+    const char* ToJson()
+    {
+        std::string result = "{ ";
+        result + "\"UUID\": \"" + m_uuid + "\", \n"; 
+        result + "\"Title\": \"" + m_tile.c + "\", \n"; 
+        result + "\"Description\": \"" + m_description.c + "\", \n"; 
+        result + "\"Elements\": \n [ ";
+        for (auto& e : m_elements) 
+            result + "{ " + e.ToJson() + " }, \n";
+
+        result + " ]} ";
+
+        LOG_ERROR("","Rung to Json: %s", result.c_str());
+        return result.c_str();
+    }
+
 
 private:
 
@@ -239,6 +269,7 @@ private:
         for (auto& r : m_elements) 
             r.SetAsSelected(false);
     }
+
 
     std::string m_uuid;
     string_t    m_tile;

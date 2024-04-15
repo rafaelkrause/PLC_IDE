@@ -14,6 +14,18 @@
 # EXTERNAL cache entries
 ########################
 
+//Compile with support to copy/paste images
+CLIP_ENABLE_IMAGE:BOOL=ON
+
+//Compile clip examples
+CLIP_EXAMPLES:BOOL=OFF
+
+//Compile clip tests
+CLIP_TESTS:BOOL=OFF
+
+//Compile with libpng to support copy/paste image in png format
+CLIP_X11_WITH_PNG:BOOL=ON
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 
@@ -235,6 +247,21 @@ L-PLC_IDE_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 L-PLC_IDE_SOURCE_DIR:STATIC=/home/leise/Downloads/PLC_IDE
 
+//Path to a library.
+PNG_LIBRARY:FILEPATH=/usr/lib/libpng.so
+
+//Value Computed by CMake
+clip_BINARY_DIR:STATIC=/home/leise/Downloads/PLC_IDE/build/lib/ThirdParty/clip
+
+//Value Computed by CMake
+clip_IS_TOP_LEVEL:STATIC=OFF
+
+//Dependencies for the target
+clip_LIB_DEPENDS:STATIC=general;xcb;general;pthread;general;/usr/lib/libpng.so;
+
+//Value Computed by CMake
+clip_SOURCE_DIR:STATIC=/home/leise/Downloads/PLC_IDE/lib/ThirdParty/clip
+
 
 ########################
 # INTERNAL cache entries
@@ -340,7 +367,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -383,6 +410,10 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Have include png.h
+HAVE_PNG_H:INTERNAL=1
+//Have include xcb/xcb.h
+HAVE_XCB_XLIB_H:INTERNAL=1
 //linker supports push/pop state
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 

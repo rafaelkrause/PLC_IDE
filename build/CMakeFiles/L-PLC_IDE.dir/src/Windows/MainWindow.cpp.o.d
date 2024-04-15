@@ -216,6 +216,7 @@ CMakeFiles/L-PLC_IDE.dir/src/Windows/MainWindow.cpp.o: \
  /home/leise/Downloads/PLC_IDE/src/Windows/UI_Windows.h \
  /home/leise/Downloads/PLC_IDE/lib/standartypes.h \
  /home/leise/Downloads/PLC_IDE/src/Core/ui_core.hpp \
+ /home/leise/Downloads/PLC_IDE/src/Editors/EditorBase.hpp \
  /home/leise/Downloads/PLC_IDE/src/Core/IecProject.hpp \
  /usr/include/c++/12.2.0/vector /usr/include/c++/12.2.0/bits/allocator.h \
  /usr/include/c++/12.2.0/x86_64-pc-linux-gnu/bits/c++allocator.h \
@@ -265,7 +266,6 @@ CMakeFiles/L-PLC_IDE.dir/src/Windows/MainWindow.cpp.o: \
  /usr/include/c++/12.2.0/pstl/glue_algorithm_defs.h \
  /usr/include/c++/12.2.0/pstl/execution_defs.h \
  /home/leise/Downloads/PLC_IDE/src/Core/Object.hpp \
- /home/leise/Downloads/PLC_IDE/src/Editors/EditorBase.hpp \
  /home/leise/Downloads/PLC_IDE/src/Core/Object.hpp \
  /home/leise/Downloads/PLC_IDE/src/Editors/EditorDut.hpp \
  /home/leise/Downloads/PLC_IDE/src/Editors/EditorBase.hpp \

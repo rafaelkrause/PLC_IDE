@@ -2,25 +2,12 @@
 #define EDITOR_BASE_LIB_H
 
 #include "imgui.h"
+#include <cstddef>
 
 class EditorBase
 {
 public:
 
-	enum EDITOR_COMMANDS
-	{
-		CMD_UNDO,
-		CMD_REDO,
-		CMD_COPY,
-		CMD_CUT,
-		CMD_PASTE,
-		CMD_DEL,
-		CMD_SELECT_ALL,
-		CMD_FIND,
-		CMD_FIND_REPLACE,
-		CMD_GOTO_LINE,
-
-	};
 
 	EditorBase() { ; };
 	~EditorBase() { ; };
@@ -35,7 +22,6 @@ public:
 	virtual const char*   GetCodeData()				{ return ""; }
 	virtual void	SetVarData(const char* data)	{ ; }
 	virtual void	SetCodeData(const char* data)	{ ; }
-	virtual void	PushSetUserCmdByMenu(EDITOR_COMMANDS cmd) { ; }
 	virtual int		GetActualLineIdx()				{ return 0; }
 	virtual int		GetActualColdx()				{ return 0; }
 	virtual bool	IsOverwrite()					{ return false; }

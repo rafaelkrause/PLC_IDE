@@ -64,29 +64,46 @@ CMAKE_BINARY_DIR = /home/leise/Downloads/PLC_IDE/build
 
 # The main recursive "all" target.
 all: CMakeFiles/L-PLC_IDE.dir/all
+all: lib/ThirdParty/clip/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: lib/ThirdParty/clip/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/L-PLC_IDE.dir/clean
+clean: lib/ThirdParty/clip/clean
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory lib/ThirdParty/clip
+
+# Recursive "all" directory target.
+lib/ThirdParty/clip/all: lib/ThirdParty/clip/CMakeFiles/clip.dir/all
+.PHONY : lib/ThirdParty/clip/all
+
+# Recursive "preinstall" directory target.
+lib/ThirdParty/clip/preinstall:
+.PHONY : lib/ThirdParty/clip/preinstall
+
+# Recursive "clean" directory target.
+lib/ThirdParty/clip/clean: lib/ThirdParty/clip/CMakeFiles/clip.dir/clean
+.PHONY : lib/ThirdParty/clip/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/L-PLC_IDE.dir
 
 # All Build rule for target.
-CMakeFiles/L-PLC_IDE.dir/all:
+CMakeFiles/L-PLC_IDE.dir/all: lib/ThirdParty/clip/CMakeFiles/clip.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/L-PLC_IDE.dir/build.make CMakeFiles/L-PLC_IDE.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/L-PLC_IDE.dir/build.make CMakeFiles/L-PLC_IDE.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leise/Downloads/PLC_IDE/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 "Built target L-PLC_IDE"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leise/Downloads/PLC_IDE/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27 "Built target L-PLC_IDE"
 .PHONY : CMakeFiles/L-PLC_IDE.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/L-PLC_IDE.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/leise/Downloads/PLC_IDE/build/CMakeFiles 26
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leise/Downloads/PLC_IDE/build/CMakeFiles 31
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/L-PLC_IDE.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/leise/Downloads/PLC_IDE/build/CMakeFiles 0
 .PHONY : CMakeFiles/L-PLC_IDE.dir/rule
@@ -99,6 +116,32 @@ L-PLC_IDE: CMakeFiles/L-PLC_IDE.dir/rule
 CMakeFiles/L-PLC_IDE.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/L-PLC_IDE.dir/build.make CMakeFiles/L-PLC_IDE.dir/clean
 .PHONY : CMakeFiles/L-PLC_IDE.dir/clean
+
+#=============================================================================
+# Target rules for target lib/ThirdParty/clip/CMakeFiles/clip.dir
+
+# All Build rule for target.
+lib/ThirdParty/clip/CMakeFiles/clip.dir/all:
+	$(MAKE) $(MAKESILENT) -f lib/ThirdParty/clip/CMakeFiles/clip.dir/build.make lib/ThirdParty/clip/CMakeFiles/clip.dir/depend
+	$(MAKE) $(MAKESILENT) -f lib/ThirdParty/clip/CMakeFiles/clip.dir/build.make lib/ThirdParty/clip/CMakeFiles/clip.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/leise/Downloads/PLC_IDE/build/CMakeFiles --progress-num=28,29,30,31 "Built target clip"
+.PHONY : lib/ThirdParty/clip/CMakeFiles/clip.dir/all
+
+# Build rule for subdir invocation for target.
+lib/ThirdParty/clip/CMakeFiles/clip.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leise/Downloads/PLC_IDE/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lib/ThirdParty/clip/CMakeFiles/clip.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/leise/Downloads/PLC_IDE/build/CMakeFiles 0
+.PHONY : lib/ThirdParty/clip/CMakeFiles/clip.dir/rule
+
+# Convenience name for target.
+clip: lib/ThirdParty/clip/CMakeFiles/clip.dir/rule
+.PHONY : clip
+
+# clean rule for target.
+lib/ThirdParty/clip/CMakeFiles/clip.dir/clean:
+	$(MAKE) $(MAKESILENT) -f lib/ThirdParty/clip/CMakeFiles/clip.dir/build.make lib/ThirdParty/clip/CMakeFiles/clip.dir/clean
+.PHONY : lib/ThirdParty/clip/CMakeFiles/clip.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

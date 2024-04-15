@@ -37,6 +37,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/L-PLC_IDE.dir/src/Core/Object.cpp.o.d"
   "CMakeFiles/L-PLC_IDE.dir/src/Core/ui_core.cpp.o"
   "CMakeFiles/L-PLC_IDE.dir/src/Core/ui_core.cpp.o.d"
+  "CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.o"
+  "CMakeFiles/L-PLC_IDE.dir/src/Editors/EditorPouLadder.cpp.o.d"
   "CMakeFiles/L-PLC_IDE.dir/src/UI_MainGL.cpp.o"
   "CMakeFiles/L-PLC_IDE.dir/src/UI_MainGL.cpp.o.d"
   "CMakeFiles/L-PLC_IDE.dir/src/UI_Style.cpp.o"

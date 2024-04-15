@@ -36,7 +36,6 @@ public:
 	void		SetSaved() override							{ m_textChanged = false; }
 	bool		IsFocused() override						{ return m_texteditorVars.IsFocused() || m_texteditorCode.IsFocused(); }
 
-	void		PushSetUserCmdByMenu(EDITOR_COMMANDS cmd) override { ; }
 	int			GetActualLineIdx() override					{ return  actLn; }
 	int			GetActualColdx() override					{ return  actCol; }
 	bool		IsOverwrite() override						{ return isOverWrite; }
