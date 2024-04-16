@@ -13,6 +13,7 @@ IecProject::IecProject()
 	
 	auto plc =  new PlcEditorObject(PlcEditorObject::OBJ_TYPE_PLC_PROJECT, u8"PLC");
 	plc->AddChildren(new PlcEditorObject(PlcEditorObject::OBJ_TYPE_PLC_POUP_PROGRAM_LADDER, u8"PLC_PRG"));
+	//plc->AddChildren(new PlcEditorObject(PlcEditorObject::OBJ_TYPE_PLC_POUP_PROGRAM, u8"PLC_PRG"));
 	plc->AddChildren(new PlcEditorObject(PlcEditorObject::OBJ_TYPE_FOLDER, u8"GLOBAL_VARS"));
 	plc->AddChildren(new PlcEditorObject(PlcEditorObject::OBJ_TYPE_FOLDER, u8"STRCUTS"));
 	plc->AddChildren(new PlcEditorObject(PlcEditorObject::OBJ_TYPE_FOLDER, u8"ENUMS"));

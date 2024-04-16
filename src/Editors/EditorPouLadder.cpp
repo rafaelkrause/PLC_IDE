@@ -18,38 +18,38 @@ constexpr const int 	LADDER_MAXIMUM_UNDO_HISTORY 		= 20;
 	
 void EditorPouLadder::PushCommand(EditorPouLadderCommand* _cmd)
 {
-    _cmd->Execute(this);
-    m_redo_history.insert(m_redo_history.cbegin(),_cmd);
+    // _cmd->Execute(this);
+    // m_redo_history.insert(m_redo_history.cbegin(),_cmd);
 
-    if(m_redo_history.size() > LADDER_MAXIMUM_UNDO_HISTORY)
-        m_redo_history.erase(m_redo_history.begin());
+    // if(m_redo_history.size() > LADDER_MAXIMUM_UNDO_HISTORY)
+    //     m_redo_history.erase(m_redo_history.begin());
 
 }
 
 void EditorPouLadder::Undo()
 {
-    if(m_redo_history_pos >= 0 && m_redo_history_pos < m_redo_history.size())
-    {
-        auto cmd = m_redo_history[m_redo_history_pos++];
-        cmd->Undo(this);
-    }
+    // if(m_redo_history_pos >= 0 && m_redo_history_pos < m_redo_history.size())
+    // {
+    //     auto cmd = m_redo_history[m_redo_history_pos++];
+    //     cmd->Undo(this);
+    // }
 
-    if(m_redo_history_pos >= m_redo_history.size())
-        m_redo_history_pos = m_redo_history.size() -1;
+    // if(m_redo_history_pos >= m_redo_history.size())
+    //     m_redo_history_pos = m_redo_history.size() -1;
 
 }
 
 void EditorPouLadder::Redo()
 {
     
-    if(m_redo_history_pos >= 0 && m_redo_history_pos < m_redo_history.size())
-    {
-        auto cmd = m_redo_history[m_redo_history_pos--];
-        cmd->Redo(this);
-    }
+    // if(m_redo_history_pos >= 0 && m_redo_history_pos < m_redo_history.size())
+    // {
+    //     auto cmd = m_redo_history[m_redo_history_pos--];
+    //     cmd->Redo(this);
+    // }
 
-    if(m_redo_history_pos < 0)
-        m_redo_history_pos = 0;
+    // if(m_redo_history_pos < 0)
+    //     m_redo_history_pos = 0;
 
 }
 
@@ -121,32 +121,32 @@ void EditorPouLadder::DrawWindow(ImVec2 size)
 
         if(ImGui::Button("ADD")) 
         {
-            this->PushCommand(new CommandAddRung());
+            //this->PushCommand(new CommandAddRung());
         }
         ImGui::SameLine();
         if(ImGui::Button("Remove")) 
         {
-            this->PushCommand(new CommandRemoveRung());
+            //this->PushCommand(new CommandRemoveRung());
         }
         ImGui::SameLine();
         if(ImGui::Button("UNDO")) 
         {
-            this->Undo();
+            //this->Undo();
         }
         ImGui::SameLine();
         if(ImGui::Button("REDO")) 
         {
-            this->Redo();
+            //this->Redo();
         }
         ImGui::EndGroup();
 
         //Draw All Lines
         for (size_t i = 0; i < m_ladder_rungs.size(); i++) 
         {
-            m_ladder_rungs[i].Draw(drawlist, i);
+            m_ladder_rungs[i].Draw(drawlist, i, true);
         }
 
-        ImGui::Text("History: %ld , pos, %d", m_redo_history.size(), m_redo_history_pos);
+        //ImGui::Text("History: %ld , pos, %d", m_redo_history.size(), m_redo_history_pos);
         ImGui::EndChild();
     }
     ImGui::PopStyleColor();

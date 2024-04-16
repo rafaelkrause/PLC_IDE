@@ -22,7 +22,6 @@ class LadderRung
 {
 
 
-
 public:
 	LadderRung()
     {
@@ -31,7 +30,6 @@ public:
         m_tile.c[0] = '\0';
         m_description.c[0] = '\0';
 
-        m_is_selected = false;
         m_editing_description = false;
         m_editing_tile = false;
 
@@ -60,16 +58,16 @@ public:
             }
         }
     }
-    void            RemoveElement(int col_pos, int level);
-    std::string&    GetUUID()                               {return m_uuid;}
+    std::string&    GetUUID()                               { return m_uuid;}
 
-    void            SetAsSelected(bool selected)            { m_is_selected = selected;}
-    bool            IsSelected()                            {return m_is_selected;}
+    ImRect&          GetBBox()                              { return m_bbox;}
 
-    void            Draw(ImDrawList* drawlist, int line_index)
+
+
+    void            Draw(ImDrawList* _drawlist, int _line_index, bool _isSelected)
     {     
 
-        if(!drawlist)
+        if(!_drawlist)
             return ;
 
         //Save Current cursor position
@@ -99,6 +97,7 @@ public:
             sprintf(name.c,"###rung_%s_title_editing",m_uuid.c_str());
             if(ImGui::InputText(name.c, m_tile.c, sizeof(m_tile)-1,ImGuiInputTextFlags_EnterReturnsTrue | ImGuiInputTextFlags_AutoSelectAll))
                 m_editing_tile = false;
+
         }
 
         if(ImGui::IsItemClicked())
@@ -140,14 +139,17 @@ public:
         int elementIdx = 0;
         for (auto& r : m_elements) 
         {
-            ImVec2 bb = r.Draw(drawlist,pos);              
+            ImVec2 bb = r.Draw(_drawlist,pos);              
             
-            if(r.IsClicked() && this->IsSelected())
+            //Clear Elements Selection if Line not Selected
+            if(!_isSelected)
+                 r.SetAsSelected(false);
+            
+            //check Element Selection
+            if(r.IsClicked() && _isSelected)
             {
                 if(!ImGui::IsKeyDown(ImGuiKey::ImGuiKey_LeftCtrl) && !ImGui::IsKeyDown(ImGuiKey::ImGuiKey_RightCtrl))
-                {
                     ClearSelectedElements();
-                }
                 
                 r.SetAsSelected(true);
             }   
@@ -167,11 +169,11 @@ public:
                 
                 //Draw Drop Points;
                 if(ImGui::IsMouseHoveringRect(leftRectP1, leftRectP2))
-                    drawlist->AddRectFilled(leftRectP1, leftRectP2, ImGui::ColorConvertFloat4ToU32(UI_COLOR_LIGHT_YELLOW));                
+                    _drawlist->AddRectFilled(leftRectP1, leftRectP2, ImGui::ColorConvertFloat4ToU32(UI_COLOR_LIGHT_YELLOW));                
                 else
-                    drawlist->AddRectFilled(leftRectP1, leftRectP2, ImGui::ColorConvertFloat4ToU32(UI_COLOR_LIGHT_BLUE));                
+                    _drawlist->AddRectFilled(leftRectP1, leftRectP2, ImGui::ColorConvertFloat4ToU32(UI_COLOR_LIGHT_BLUE));                
                 
-                drawlist->AddRect(leftRectP1, leftRectP2, ImGui::ColorConvertFloat4ToU32(UI_COLOR_LIGHT_GRAY));  
+                _drawlist->AddRect(leftRectP1, leftRectP2, ImGui::ColorConvertFloat4ToU32(UI_COLOR_LIGHT_GRAY));  
 
                 //Drop Released
                 if (ImGui::IsMouseHoveringRect(leftRectP1, leftRectP2) && !ImGui::IsMouseDown(0) && payload.Data && payload.DataSize == sizeof(LadderElement))
@@ -208,41 +210,38 @@ public:
         //If no Elements, draw Empty line
         if(m_elements.size() <= 0)
         {
-            drawlist->AddLine(ImVec2(pos.x, pos.y + fontHeigt * 2.5), ImVec2(pos.x + 40, pos.y + fontHeigt * 2.5), ImGui::ColorConvertFloat4ToU32(UI_COLOR_WHITE),2.0);
+            _drawlist->AddLine(ImVec2(pos.x, pos.y + fontHeigt * 2.5), ImVec2(pos.x + 40, pos.y + fontHeigt * 2.5), ImGui::ColorConvertFloat4ToU32(UI_COLOR_WHITE),2.0);
         }
 
         ImGui::EndGroup();
-
        
 
         //Draw Line Divisor
-        drawlist->AddLine(ImVec2(originalCursorPos.x + 45, originalCursorPos.y), ImVec2(originalCursorPos.x + 45, pos.y + rungMaxY+fontHeigt*2),ImGui::GetColorU32(ImGuiCol_TextDisabled),1.0);
+        _drawlist->AddLine(ImVec2(originalCursorPos.x + 45, originalCursorPos.y), ImVec2(originalCursorPos.x + 45, pos.y + rungMaxY+fontHeigt*2),ImGui::GetColorU32(ImGuiCol_TextDisabled),1.0);
 
         //Draw Line Number
         char lineNumber[20];
-        sprintf(lineNumber, u8"%d", line_index + 1);
+        sprintf(lineNumber, u8"%d", _line_index + 1);
         ImVec2 lnNumberSize = ImGui::CalcTextSize(lineNumber);
-        drawlist->AddText(ImVec2(originalCursorPos.x + 40 - lnNumberSize.x,originalCursorPos.y+5), m_is_selected ? ImGui::GetColorU32(ImGuiCol_Text) : ImGui::GetColorU32(ImGuiCol_TextDisabled),lineNumber);
+        _drawlist->AddText(ImVec2(originalCursorPos.x + 40 - lnNumberSize.x,originalCursorPos.y+5), -_isSelected ? ImGui::GetColorU32(ImGuiCol_Text) : ImGui::GetColorU32(ImGuiCol_TextDisabled),lineNumber);
        
          //Horizontal Line
         //drawlist->AddLine(ImVec2(originalCursorPos.x + 25, originalCursorPos.y), ImVec2(originalCursorPos.x +40, originalCursorPos.y + pos.y+ rungMaxY + fontHeigt), ImGui::ColorConvertFloat4ToU32(UI_COLOR_WHITE),2);
 
         //Add Rug Start
-        drawlist->AddLine(ImVec2(startPos.x, startPos.y + fontHeigt), ImVec2(startPos.x, startPos.y + rungMaxY + fontHeigt), ImGui::ColorConvertFloat4ToU32(UI_COLOR_WHITE),2);
+        _drawlist->AddLine(ImVec2(startPos.x, startPos.y + fontHeigt), ImVec2(startPos.x, startPos.y + rungMaxY + fontHeigt), ImGui::ColorConvertFloat4ToU32(UI_COLOR_WHITE),2);
+
+
+        //Clear Elements if Clicked on Line Identification Area
+        if(_isSelected && ImGui::IsMouseClicked(0) && ImGui::IsMouseHoveringRect(originalCursorPos, ImVec2(originalCursorPos.x + 45, pos.y + rungMaxY+fontHeigt*2)))
+            ClearSelectedElements();
 
         //Update Cursor position
         ImGui::SetCursorScreenPos(ImVec2(originalCursorPos.x,startPos.y + rungMaxY + fontHeigt*2));
 
-        ImRect rungBbox(originalCursorPos, ImVec2(pos.x, pos.y + rungMaxY + fontHeigt*2));
 
-        //Check if Rug is Selected (Clicked in any part)
-        if(ImGui::IsMouseClicked(0) && !ImGui::IsKeyDown(ImGuiKey::ImGuiKey_LeftCtrl) && !ImGui::IsKeyDown(ImGuiKey::ImGuiKey_RightCtrl))
-        {
-            if(ImGui::IsMouseHoveringRect(rungBbox.Min,rungBbox.Max))
-                m_is_selected = true;
-            else if(ImGui::IsWindowFocused(ImGuiFocusedFlags_ChildWindows))
-                m_is_selected = false;
-        } 
+        m_bbox = ImRect(originalCursorPos, ImVec2(pos.x, pos.y + rungMaxY + fontHeigt*2));
+  
     }
 
     const char* ToJson()
@@ -275,9 +274,10 @@ private:
     string_t    m_tile;
     string_t    m_description;
     
-    bool        m_is_selected;
     bool        m_editing_description;
     bool        m_editing_tile;
+
+    ImRect      m_bbox;
 
     std::vector<LadderElement> m_elements;
 };

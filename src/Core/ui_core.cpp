@@ -247,7 +247,7 @@ bool UI_Core::AppInit()
 
 	//Init log server
 	log_init("ui.log", 100);
-	//os_sleep(30);
+	os_sleep(30);
 
 	//Load App Config
 	g_appcfg.RefreshRate = 1;
@@ -402,9 +402,10 @@ void UI_Core::AppLoop()
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
-		
+
 		UI_Windows::MainWindow();
 
+		
 		//ImGui::ShowDemoWindow();
 
 		// Rendering

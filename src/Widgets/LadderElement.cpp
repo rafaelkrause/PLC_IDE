@@ -68,9 +68,9 @@
         std::string result(elementJson);
         
         cJSON_Delete(root);
-        free(elementJson);
+        //free(elementJson);
         
-        return result.c_str();
+        return "";
     }
 
     //Draw element and Return its size

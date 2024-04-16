@@ -52,7 +52,10 @@ static const char *level_names[] = {"TRACE", "DEBUG", "INFO", "WARN", "ERROR", "
 //------------------------------------------------------------------------------
 int log_dumptoFile(void* arg)
 {
-	FILE* fp;
+	
+  g_isInitialized = 1;
+  
+  FILE* fp;
 	string_t data;
 
 	while (!g_Kill)
@@ -88,10 +91,11 @@ return 1;
 //------------------------------------------------------------------------------
 int log_init(const char *filename, int interval_ms)
 {
-	if (!filename)
+	if(!filename)
 		return -1;
 
-   //Init Locks
+
+  //Init Locks
   os_spinlock_init(&g_LogLock);
 
   //Init Buffer
@@ -114,7 +118,6 @@ int log_init(const char *filename, int interval_ms)
   //Create Dump File Thread
   g_hThread = os_thread_create(log_dumptoFile, NULL, 0);
 
-  g_isInitialized = 1;
   return 1;
 }
 //
@@ -125,9 +128,9 @@ void log_finish()
 
   if(g_isInitialized)
   {
-    g_Kill = 1;
-	os_thread_join(g_hThread);
-    //queue_Clear(&g_data_queue);
+      g_Kill = 1;
+	    os_thread_join(g_hThread);
+      //queue_Clear(&g_data_queue);
   }
   
   g_isInitialized = 0;

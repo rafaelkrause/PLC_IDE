@@ -24,8 +24,8 @@ public:
 		~EditorPouLadderCommand() {;};
 
 		virtual void Execute(EditorPouLadder *_editor) {;};
-		virtual void Undo(EditorPouLadder *_editor) {LOG_ERROR("", "UNDO");};
-		virtual void Redo(EditorPouLadder *_editor) {LOG_ERROR("", "REDO");;};
+		virtual void Undo(EditorPouLadder *_editor) {;};
+		virtual void Redo(EditorPouLadder *_editor) {;};
 		bool m_can_undo;
 		bool m_can_redo;
 	};
@@ -98,7 +98,7 @@ private:
 
 	int			m_redo_history_pos;
     bool		m_editorChanged;
-	char		m_editor_name_id[40];
+	char		m_editor_name_id[80];
 	bool		m_call_goto_popup;
 	bool		m_call_find_popup;
 
