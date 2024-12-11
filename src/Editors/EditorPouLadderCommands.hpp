@@ -3,6 +3,7 @@
 #define EDITOR_POUP_LADDER_COMMAND_LIB_H
 
 #include "EditorPouLadder.hpp"
+#include "LadderElement.hpp"
 #include "LadderRung.hpp"
 #include <cstddef>
 #include <string>
@@ -13,7 +14,7 @@
 // Add
 // Remove
 // Move
-// Paste (Same as Add)
+// Paste 
 // Edited
 //      Any kind of Edited (Title, Description, Contacts, Variables etc...)
 //      When Edited, save a deep copy of Rung, as is to complique make undo from OR elements, as it can be place any where on rung
@@ -25,8 +26,6 @@
 // Move
 // Paste (same as Add)
 // Edited
-
-
 
 
 class CommandAddRung : public EditorPouLadder::EditorPouLadderCommand
@@ -61,37 +60,28 @@ public:
             m_pos = _editor->GetRungIdxByUUID(m_rung.GetUUID());
         }
         //Inset New Rung After Selected
-        
         LOG_ERROR("","Execute: Inseted Rung UUID: %s, pos: %d",m_rung.GetUUID().c_str(), m_pos);
         
-        m_can_undo = true;
-        m_can_redo = false;
     };
 
     void Undo(EditorPouLadder *_editor) override
     {
-        if(!_editor || !m_can_undo)
+        if(!_editor)
             return;
         
         m_rung = _editor->GetRungByUUID(m_rung.GetUUID());
         m_pos = _editor->GetRungIdxByUUID(m_rung.GetUUID());
         _editor->RemoveRungByUUID(m_rung.GetUUID());
         LOG_ERROR("","Undo: Remove UUID: %s %d",m_rung.GetUUID().c_str(), m_pos);
-
-        m_can_undo = false;
-        m_can_redo = true;
     };
 
     void Redo(EditorPouLadder *_editor) override
     {
-        if(!_editor || m_pos < 0 || !m_can_redo)
+        if(!_editor || m_pos < 0)
             return;
 
         _editor->InsertRung(m_rung, m_pos);
         LOG_ERROR("","Redo: Inserted UUID: %s at %d",m_rung.GetUUID().c_str(), m_pos);
-
-        m_can_undo = true;
-        m_can_redo = false;
     };
 
 private:
@@ -162,6 +152,116 @@ class CommandRemoveRung : public EditorPouLadder::EditorPouLadderCommand
     private:
 
     std::vector<UndoData> m_removed_rungs;
+};
+
+class CommandAddElement : public EditorPouLadder::EditorPouLadderCommand
+{
+
+public:
+
+    CommandAddElement() {;};
+    CommandAddElement(LadderElement::ElementType _type)
+    {
+        m_element.SetType(_type);
+    }
+
+    ~CommandAddElement() {;};
+
+    void Execute(EditorPouLadder *_editor) override
+    {    
+        if(_editor)
+            {
+                auto rungs = _editor->GetSelectedRungsUUIDs();
+                if(rungs.size() == 1)
+                {
+                    auto elements =_editor->GetSelectedElementsUUIDs();
+
+                    //Save Original rung
+                    m_rung_original = _editor->GetRungByUUID(rungs[0]);
+
+                    //Save New State
+                    m_rung_changed =  _editor->GetRungByUUID(rungs[0]);
+                    
+                    if(elements.size() > 0 )
+                    {
+                        auto e = m_rung_changed.GetElementIdxByUUID(elements[0]);
+                        m_rung_changed.InsertElement(m_element);
+                    }
+                    else                 
+                    {    
+                        m_rung_changed.AddElement(m_element);
+                    }
+                }       
+            }
+    };
+
+    void Undo(EditorPouLadder *_editor) override
+    {
+    };
+
+    void Redo(EditorPouLadder *_editor) override
+    {
+    };
+
+private:
+    LadderElement   m_element;
+    LadderRung      m_rung_original;
+    LadderRung      m_rung_changed;
+};
+
+class CommandRemoveElements: public EditorPouLadder::EditorPouLadderCommand
+{
+    public:
+
+    CommandRemoveElements() {;}
+    ~CommandRemoveElements() {;}
+    
+    void Execute(EditorPouLadder *_editor) override
+    {
+        if(_editor)
+        {
+            auto rungs = _editor->GetSelectedRungsUUIDs();
+            if(rungs.size() == 1)
+            {
+                auto elements =_editor->GetSelectedElementsUUIDs();
+
+                if(elements.size() > 0 )
+                {
+                    //Save Original rung
+                    m_rung_original = _editor->GetRungByUUID(rungs[0]);
+
+                    //Save New State
+                    m_rung_changed =  _editor->GetRungByUUID(rungs[0]);
+
+                    //Remove Elements
+                    for (size_t i; i < elements.size(); i++)
+                        m_rung_changed.RemoveElement(elements[i]);
+
+                    //Update rung on Editor
+                    _editor->UpdateRungByUUID(rungs[0], m_rung_changed);
+
+                }
+            }       
+        }
+    };
+
+    void Undo(EditorPouLadder *_editor) override
+    {
+        if(_editor)
+            _editor->UpdateRungByUUID(m_rung_original.GetUUID(), m_rung_original);
+
+    };
+
+    void Redo(EditorPouLadder *_editor) override
+    {
+        if(_editor)
+            _editor->UpdateRungByUUID(m_rung_changed.GetUUID(), m_rung_changed);
+    }
+
+    private:
+
+    LadderRung m_rung_original;
+    LadderRung m_rung_changed;
 };
 
 

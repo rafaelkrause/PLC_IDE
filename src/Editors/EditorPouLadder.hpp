@@ -20,14 +20,12 @@ public:
 	class EditorPouLadderCommand
 	{
 		public:
-		EditorPouLadderCommand() { m_can_undo = false; m_can_redo = false;};
+		EditorPouLadderCommand() { ;};
 		~EditorPouLadderCommand() {;};
 
 		virtual void Execute(EditorPouLadder *_editor) {;};
 		virtual void Undo(EditorPouLadder *_editor) {;};
 		virtual void Redo(EditorPouLadder *_editor) {;};
-		bool m_can_undo;
-		bool m_can_redo;
 	};
 	
 	EditorPouLadder()
@@ -69,20 +67,22 @@ public:
 	void		PushCommand(EditorPouLadderCommand* _cmd);
 	void		Undo();
 	void		Redo();
-	
+	void 		Remove();
+	void 		Insert();
 	void		PushSelectedRung(std::string& rung_uuid)				{ m_selected_rungs.push_back(rung_uuid); }
 	void 		ClearSelectedRungs()									{ m_selected_rungs.clear();	}
 	const std::vector<std::string> &GetSelectedRungsUUIDs() const			{ return  m_selected_rungs ;}
 	
 	void 		PushSelectedLadderElement(std::string& element_uuid)	{ m_selected_ladder_elements.push_back(element_uuid);}
 	void 		ClearSelectedLadderElements()							{ m_selected_ladder_elements.clear();}
+	const std::vector<std::string> &GetSelectedElementsUUIDs() const	{ return  m_selected_ladder_elements ;}
 
 	void		AddRung(LadderRung _rung)								{ m_ladder_rungs.push_back(_rung);}
 	void 		InsertRung(LadderRung _rung, size_t _pos);	
 
 	void 		RemoveRungByPos(size_t _pos);
 	void 		RemoveRungByUUID(std::string& _UUID);
-
+	void		UpdateRungByUUID(std::string& _UUID, LadderRung& _rung);
 	LadderRung& GetRungByUUID(std::string& _UUID);
 	int			GetRungIdxByUUID(std::string& _UUID);
 
@@ -94,6 +94,7 @@ private:
     std::vector<LadderRung> m_ladder_rungs;
 	std::vector<std::string> m_selected_rungs;
 	std::vector<std::string> m_selected_ladder_elements;
+	std::vector<EditorPouLadderCommand*> m_undo_history;
 	std::vector<EditorPouLadderCommand*> m_redo_history;
 
 	int			m_redo_history_pos;
@@ -101,6 +102,8 @@ private:
 	char		m_editor_name_id[80];
 	bool		m_call_goto_popup;
 	bool		m_call_find_popup;
+
+	void 		ProcessKeyBoardCommands();
 
 	// //Copy a Rung on Element (According to selection) to Clipboard
 	// void CommandCopy()

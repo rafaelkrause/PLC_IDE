@@ -1,0 +1,15 @@
+Estrutura
+
+Rung
+  Elements (Contat,Coil, Block) Brach in Branch out
+                                |-> Elemts 
+
+Element save its position and BBox (so to get end will ne pos.x+size.x)
+When Add a new Element Calc Its Position, relative to line/brach and Update Line/Brunch BBox
+When Add new Branch Calc its Position, base on Line Heigh and Element positon
+
+  
+
+                                
+                                    
+    

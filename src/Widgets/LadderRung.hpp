@@ -27,9 +27,9 @@ public:
     {
         UUIDv4::UUIDGenerator<std::mt19937_64> uuidGenerator;
 	    m_uuid = uuidGenerator.getUUID().str();
+
         m_tile.c[0] = '\0';
         m_description.c[0] = '\0';
-
         m_editing_description = false;
         m_editing_tile = false;
 
@@ -41,13 +41,31 @@ public:
         m_elements.push_back(LadderElement(LadderElement::ElementType::COIL_SET));
         m_elements.push_back(LadderElement(LadderElement::ElementType::COIL_RESET));
     }
+
+    LadderRung(std::string& _UUID)
+    {
+        m_uuid = _UUID;
+        m_tile.c[0] = '\0';
+        m_description.c[0] = '\0';
+        m_editing_description = false;
+        m_editing_tile = false;
+
+        m_elements.push_back(LadderElement(LadderElement::ElementType::CONTACT_OPEN));
+        m_elements.push_back(LadderElement(LadderElement::ElementType::CONTACT_CLOSE));
+        m_elements.push_back(LadderElement(LadderElement::ElementType::CONTACT_RISE_EDGE));
+        m_elements.push_back(LadderElement(LadderElement::ElementType::CONTACT_FALING_EDGE));
+        m_elements.push_back(LadderElement(LadderElement::ElementType::COIL));
+        m_elements.push_back(LadderElement(LadderElement::ElementType::COIL_SET));
+        m_elements.push_back(LadderElement(LadderElement::ElementType::COIL_RESET));
+    }
+
     ~LadderRung()
     {
         ;
     }
 
-    void        AddElement(int col_pos, int level);
-    void        RemoveElement(std::string& uuid)
+    void AddElement(int col_pos, int level);
+    void RemoveElement(std::string& uuid)
     {
         for (size_t i; i < m_elements.size(); i++) 
         {
@@ -58,13 +76,11 @@ public:
             }
         }
     }
-    std::string&    GetUUID()                               { return m_uuid;}
-
-    ImRect&          GetBBox()                              { return m_bbox;}
-
+    std::string& GetUUID()      { return m_uuid;}
+    ImRect& GetBBox()           { return m_bbox;}
 
 
-    void            Draw(ImDrawList* _drawlist, int _line_index, bool _isSelected)
+    void Draw(ImDrawList* _drawlist, int _line_index, bool _isSelected)
     {     
 
         if(!_drawlist)

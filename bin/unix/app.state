@@ -1,10 +1,10 @@
 {
-	"WindowSize_x":	949,
-	"WindowSize_y":	1030,
+	"WindowSize_x":	1920,
+	"WindowSize_y":	1048,
 	"WindowPosition_x":	0,
 	"WindowPosition_y":	0,
 	"IsAppMaximized":	true,
-	"ProjectTreePanelSize":	0.21391816437244415,
-	"ConsolePanelSize":	0.81242275238037109,
+	"ProjectTreePanelSize":	0.11837460100650787,
+	"ConsolePanelSize":	0.88232564926147461,
 	"ProgramName":	""
 }

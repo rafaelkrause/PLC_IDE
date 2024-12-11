@@ -36,7 +36,7 @@ public:
     {
         enum PinType
         {
-            PIN_CONST_NUMBER,
+            PIN_CONST_BOOL,
             PIN_CONST_INT,
             PIN_CONST_FLOAT,
             PIN_CONST_STRING,
@@ -49,7 +49,26 @@ public:
         std::string VariableAdress;     //Used for Variables and Constants
     };
 
-    LadderElement(ElementType type) 
+
+    LadderElement() 
+    {
+        UUIDv4::UUIDGenerator<std::mt19937_64> uuidGenerator;
+        m_uuid = uuidGenerator.getUUID().str();
+        m_type = ElementType::CONTACT_OPEN;
+        
+        m_contact_var_name = "???";
+        m_block_name = "???";
+        m_block_instance = "???";
+        
+        m_is_selected = false;
+        m_is_dragging = false;
+        m_is_drop_over = false;
+
+        ImRect m_bbox = ImRect();
+
+    }
+
+    LadderElement(ElementType type)
     {
         UUIDv4::UUIDGenerator<std::mt19937_64> uuidGenerator;
         m_uuid = uuidGenerator.getUUID().str();
@@ -67,6 +86,7 @@ public:
 
 
     }
+    
     ~LadderElement()
     {
         ;
@@ -144,7 +164,6 @@ private:
     std::vector<BlockPin> m_block_inputs;
     std::vector<BlockPin> m_block_outputs;
 
-    
     bool    m_is_selected;
     bool    m_is_dragging;
     bool    m_is_drop_over;

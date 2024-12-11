@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/leise/Downloads/PLC_IDE/bin/unix/L-PLC_IDE"
-  "/home/leise/Downloads/PLC_IDE/bin/unix/L-PLC_IDE.pdb"
+  "../bin/unix/L-PLC_IDE"
+  "../bin/unix/L-PLC_IDE.pdb"
   "CMakeFiles/L-PLC_IDE.dir/lib/ThirdParty/GL/unix/gl3w.c.o"
   "CMakeFiles/L-PLC_IDE.dir/lib/ThirdParty/GL/unix/gl3w.c.o.d"
   "CMakeFiles/L-PLC_IDE.dir/lib/ThirdParty/JSON/cJSON.c.o"
